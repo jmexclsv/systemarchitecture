@@ -1,0 +1,61 @@
+<div class="input-field">
+    <input type="password" id="password" placeholder="Passdadsword">
+    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+</div>
+<style>
+    .input-field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border: 1px solid #000; /* Optional styling */
+        border-radius: 4px;
+        padding: 5px;
+    }
+    
+    .input-field input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 5px;
+        font-size: 1rem;
+        padding-right: 30px; /* Space for the eye icon */
+    }
+    
+    .input-field .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: gray;
+        font-size: 1rem;
+        visibility: visible; /* Ensure icon is always visible */
+    }
+    
+    /* This ensures the icon is always visible, regardless of input state */
+    .input-field input:focus + .toggle-password,
+    .input-field input:not(:focus) + .toggle-password {
+        visibility: visible;
+    }
+    
+    /* Optional: Hover effect for better user experience */
+    .input-field .toggle-password:hover {
+        color: black;
+    }
+    
+</style>
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('password');
+
+togglePassword.addEventListener('click', () => {
+    // Toggle password visibility
+    const type = passwordInput.type === 'password' ? 'text' : 'password';
+    passwordInput.type = type;
+
+    // Toggle the eye icon style (e.g., eye to eye-slash)
+    togglePassword.classList.toggle('fa-eye');
+    togglePassword.classList.toggle('fa-eye-slash');
+});
+
+</script>
